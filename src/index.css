@@ -1,0 +1,395 @@
+/* Arcade-style custom styles */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Press+Start+2P&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1e293b;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, #8b5cf6, #ec4899);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(45deg, #7c3aed, #db2777);
+}
+
+/* Arcade-style components */
+@layer components {
+  .game-card {
+    @apply shadow-2xl;
+    box-shadow: 
+      0 0 20px rgba(139, 92, 246, 0.3),
+      0 0 40px rgba(139, 92, 246, 0.1),
+      inset 0 0 20px rgba(255, 255, 255, 0.1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .game-card:hover {
+    box-shadow: 
+      0 0 30px rgba(139, 92, 246, 0.5),
+      0 0 60px rgba(139, 92, 246, 0.2),
+      inset 0 0 30px rgba(255, 255, 255, 0.15);
+  }
+
+  .game-card:active {
+    transform: scale(0.98);
+  }
+
+  /* Draggable card styles */
+  .draggable-card {
+    cursor: grab;
+    user-select: none;
+    touch-action: pan-y pinch-zoom;
+  }
+
+  .draggable-card:active {
+    cursor: grabbing;
+  }
+
+  /* Swipe direction indicators */
+  .swipe-like {
+    background: linear-gradient(45deg, rgba(34, 197, 94, 0.2), rgba(34, 197, 94, 0.1));
+    border: 2px solid rgba(34, 197, 94, 0.5);
+  }
+
+  .swipe-nope {
+    background: linear-gradient(45deg, rgba(239, 68, 68, 0.2), rgba(239, 68, 68, 0.1));
+    border: 2px solid rgba(239, 68, 68, 0.5);
+  }
+
+  /* Card stack effect */
+  .card-stack {
+    perspective: 1000px;
+  }
+
+  .card-stack .game-card:nth-child(2) {
+    transform: scale(0.9) translateY(10px);
+    opacity: 0.3;
+    z-index: 1;
+  }
+
+  .card-stack .game-card:nth-child(3) {
+    transform: scale(0.8) translateY(20px);
+    opacity: 0.2;
+    z-index: 0;
+  }
+
+  .action-button {
+    @apply w-16 h-16 rounded-full flex items-center justify-center text-white font-bold transition-all duration-200;
+    box-shadow: 
+      0 4px 15px rgba(0, 0, 0, 0.3),
+      0 0 20px rgba(255, 255, 255, 0.1);
+  }
+
+  .action-nope {
+    box-shadow: 
+      0 4px 15px rgba(239, 68, 68, 0.4),
+      0 0 20px rgba(239, 68, 68, 0.2);
+  }
+
+  .action-like {
+    box-shadow: 
+      0 4px 15px rgba(34, 197, 94, 0.4),
+      0 0 20px rgba(34, 197, 94, 0.2);
+  }
+
+  .game-button {
+    @apply px-6 py-3 rounded-full text-white font-bold transition-all duration-200;
+    box-shadow: 
+      0 4px 15px rgba(139, 92, 246, 0.4),
+      0 0 20px rgba(139, 92, 246, 0.2);
+  }
+
+  /* Arcade text effects */
+  .arcade-text {
+    font-family: 'Orbitron', monospace;
+    text-shadow: 
+      0 0 10px currentColor,
+      0 0 20px currentColor,
+      0 0 30px currentColor;
+  }
+
+  .retro-text {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.75rem;
+    line-height: 1.2;
+  }
+
+  /* Glowing border effect */
+  .glow-border {
+    position: relative;
+  }
+
+  .glow-border::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    background: linear-gradient(45deg, #8b5cf6, #ec4899, #8b5cf6);
+    border-radius: inherit;
+    z-index: -1;
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+
+  @keyframes glow {
+    from {
+      opacity: 0.5;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  /* Scan line effect */
+  .scan-lines::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      transparent 50%,
+      rgba(0, 0, 0, 0.1) 50%
+    );
+    background-size: 100% 4px;
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  /* Pixel perfect borders */
+  .pixel-border {
+    image-rendering: pixelated;
+    border: 2px solid;
+    border-image: linear-gradient(45deg, #8b5cf6, #ec4899) 1;
+  }
+
+  /* Retro button hover effects */
+  .retro-button {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .retro-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+  }
+
+  .retro-button:hover::before {
+    left: 100%;
+  }
+
+  /* Arcade cabinet effect */
+  .arcade-cabinet {
+    background: linear-gradient(135deg, #1e293b 0%, #334155 50%, #1e293b 100%);
+    border: 3px solid #475569;
+    box-shadow: 
+      inset 0 0 20px rgba(0, 0, 0, 0.5),
+      0 10px 30px rgba(0, 0, 0, 0.3);
+  }
+
+  /* CRT monitor effect */
+  .crt-effect {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .crt-effect::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(
+      ellipse at center,
+      transparent 0%,
+      rgba(0, 0, 0, 0.1) 100%
+    );
+    pointer-events: none;
+    z-index: 5;
+  }
+
+  .crt-effect::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      rgba(18, 16, 16, 0) 50%,
+      rgba(0, 0, 0, 0.25) 50%
+    );
+    background-size: 100% 4px;
+    pointer-events: none;
+    z-index: 6;
+  }
+
+  /* Swipe animations */
+  @keyframes swipeRight {
+    0% {
+      transform: translateX(0) rotate(0deg);
+      opacity: 1;
+    }
+    100% {
+      transform: translateX(400px) rotate(30deg);
+      opacity: 0;
+    }
+  }
+
+  @keyframes swipeLeft {
+    0% {
+      transform: translateX(0) rotate(0deg);
+      opacity: 1;
+    }
+    100% {
+      transform: translateX(-400px) rotate(-30deg);
+      opacity: 0;
+    }
+  }
+
+  @keyframes cardEnter {
+    0% {
+      transform: translateY(100px) scale(0.8);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0) scale(1);
+      opacity: 1;
+    }
+  }
+
+  .swipe-right {
+    animation: swipeRight 0.3s ease-out forwards;
+  }
+
+  .swipe-left {
+    animation: swipeLeft 0.3s ease-out forwards;
+  }
+
+  .card-enter {
+    animation: cardEnter 0.5s ease-out forwards;
+  }
+
+  /* Touch feedback */
+  .touch-feedback {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .touch-feedback::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.3s, height 0.3s;
+  }
+
+  .touch-feedback:active::after {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+/* Base styles */
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #0f172a;
+  color: #f8fafc;
+  overflow-x: hidden;
+}
+
+#root {
+  height: 100vh;
+  width: 100vw;
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .retro-text {
+    font-size: 0.6rem;
+  }
+  
+  .action-button {
+    @apply w-14 h-14;
+  }
+  
+  .game-button {
+    @apply px-4 py-2;
+  }
+
+  .game-card {
+    max-width: 320px;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .action-button {
+    border: 2px solid currentColor;
+  }
+  
+  .game-button {
+    border: 2px solid currentColor;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+/* PWA optimizations */
+@media (display-mode: standalone) {
+  body {
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+  }
+} 

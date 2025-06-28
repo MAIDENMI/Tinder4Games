@@ -1,0 +1,24 @@
+{
+  "name": "tinder-for-games-server",
+  "version": "1.0.0",
+  "description": "Backend server for Tinder for Games multiplayer functionality",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "socket.io": "^4.7.2",
+    "cors": "^2.8.5",
+    "helmet": "^7.0.0",
+    "compression": "^1.7.4",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "keywords": ["games", "multiplayer", "websockets", "real-time"],
+  "author": "Your Name",
+  "license": "MIT"
+} 
