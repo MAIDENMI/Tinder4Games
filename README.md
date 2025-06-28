@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # 🎮 Tinder for Games
 
 A revolutionary mobile-first web app that combines game discovery with instant play functionality. Think of it as "speed-dating for gaming" - swipe through games, instantly play the ones you like, and help gaming companies understand what players actually enjoy through real-time analytics.
@@ -219,4 +219,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 **Ready to revolutionize game discovery? Start swiping! 🎮✨** 
 =======
 # Tinder4Games
->>>>>>> eaf6cf1872bb0855b66d9231a15e468da9e30747
+
